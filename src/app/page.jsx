@@ -87,47 +87,53 @@ const MenuList = () => {
     setMenuList(menus);
   };
   const showBreakfast = () => {
-    const filtered = menuList.filter((item) => item.type === "breakfast");
+    const filtered = menus.filter((item) => item.type === "breakfast");
     setMenuList(filtered);
   };
 
   const showLunch = () => {
-    const filtered = menuList.filter((item) => item.type === "lunch");
+    const filtered = menus.filter((item) => item.type === "lunch");
     setMenuList(filtered);
   };
-
+  const showShakes = () => {
+    const filtered = menus.filter((item) => item.type === "shakes");
+    setMenuList(filtered);
+  };
   return (
-    <div className="bg-[#f9fafc] h-screens ">
+    <div className="bg-[#f9fafc] h-screens flex flex-col items-center">
       <div className="flex flex-col justify-center items-center p-3">
-        <h1 className="text-3xl ">Our Menu</h1>
-        <div className="h-1 w-20 bg-[#f4a016] mt-2"></div>
-        <div className=" flex gap-3 mt-4">
+        <h1 className="text-5xl ">Our Menu</h1>
+        <div className="h-1 w-30 bg-[#f4a016] mt-4"></div>
+        <div className="flex gap-3 mt-6">
           <button
             onClick={showAll}
-            className="bg-[#f49d0e] font-semibold py-1 px-6 rounded-xs text-white hover:bg-[0, 0, 0.3]"
+            className="bg-[#f49d0e] font-semibold py-1 px-6 rounded-xs text-white text-xl hover:bg-yellow-600 transition-colors"
           >
             All
           </button>
           <button
             onClick={showBreakfast}
             className="bg-[#f49d0e] 
-         font-semibold py-1 px-6 rounded-xs text-white"
+         font-semibold py-1 px-6 rounded-xs text-white text-xl hover:bg-yellow-600 transition-colors"
           >
             Breakfast
           </button>
           <button
             onClick={showLunch}
-            className="bg-[#f49d0e] font-semibold py-1 px-6 rounded-xs text-white"
+            className="bg-[#f49d0e] font-semibold py-1 px-6 rounded-xs text-white text-xl hover:bg-yellow-600 transition-colors"
           >
             Lunch
           </button>
-          <button className="bg-[#f49d0e] font-semibold py-1 px-6 rounded-xs text-white">
+          <button
+            onClick={showShakes}
+            className="bg-[#f49d0e] font-semibold py-1 px-6 rounded-xs text-white text-xl hover:bg-yellow-600 transition-colors"
+          >
             Shakes
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 mx-auto px-[20px]">
+      <div className="grid grid-cols-3 gap-6 mx-auto">
         {menuList.map(({ id, image, title, price, text }) => (
           <MenuListItem
             key={id}
@@ -149,12 +155,12 @@ const MenuListItem = ({ id, image, title, price, text }) => {
       <div className="bg-white w-100">
         <img className="w-100 h-62.5 rounded-sm mt-4" src={image} alt="image" />
         <div className="flex justify-between p-2">
-          <h1 className="font-semibold ">{title}</h1>
-          <p className="font-semibold bg-[#f49d0d] rounded-xs text-white text-center w-15">
+          <h1 className="font-semibold text-2xl ">{title}</h1>
+          <p className="font-semibold bg-[#f49d0d] rounded-xs text-white text-center w-20 text-xl">
             {price}
           </p>
         </div>
-        <p className="text-base p-2">{text}</p>
+        <p className="text-lg p-2 ">{text}</p>
       </div>
     </div>
   );
